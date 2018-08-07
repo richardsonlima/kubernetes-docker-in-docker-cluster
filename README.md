@@ -48,6 +48,9 @@ sudo docker cp `sudo docker ps -a |grep kube-master \
 |awk '{print $1}'`:/etc/kubernetes/admin.conf ~/.kube/config && \ 
 sudo chown -R ${USER} ~/.kube 
 
+# Downloading kubectl (1.9.9 - for linux) 
+$ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.9.9/bin/linux/amd64/kubectl
+$ mv kubectl /usr/local/bin/
 $ kubectl --kubeconfig ~/.kube/config get pods --all-namespaces
 
 # Creating a namespace
