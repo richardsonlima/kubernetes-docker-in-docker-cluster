@@ -1,4 +1,4 @@
-# kubeadm-dind-cluster [![CircleCI](https://circleci.com/gh/richardsonlima/kubernetes-cluster-over-docker/tree/master.svg?style=svg)](https://circleci.com/gh/richardsonlima/kubernetes-cluster-over-docker/tree/master) [![Travis CI](https://travis-ci.org/richardsonlima/kubernetes-cluster-over-docker.svg?branch=master)](https://travis-ci.org/richardsonlima/kubernetes-cluster-over-docker)
+# kubernetes-docker-in-docker-cluster [![CircleCI](https://circleci.com/gh/richardsonlima/kubernetes-cluster-over-docker/tree/master.svg?style=svg)](https://circleci.com/gh/richardsonlima/kubernetes-cluster-over-docker/tree/master) [![Travis CI](https://travis-ci.org/richardsonlima/kubernetes-cluster-over-docker.svg?branch=master)](https://travis-ci.org/richardsonlima/kubernetes-cluster-over-docker)
 A Kubernetes multi-node cluster for developer of Kubernetes or extend Kubernetes. Based on kubeadm and Docker in
 Docker.
 
