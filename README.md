@@ -65,6 +65,17 @@ $ # remove containers and volumes
 $ ./kubernetes-docker-in-docker-cluster-v1.9.sh clean
 ```
 
+## Some tricks
+```
+mkdir -p ~/.kube && \
+sudo docker cp `sudo docker ps -a |grep kube-master |awk '{print $1}'`:/etc/kubernetes/admin.conf ~/.kube/config && \ 
+sudo chown -R ${USER} ~/.kube && \
+kubectl --kubeconfig ~/.kube/config get pods --all-namespaces
+
+# Creating a namespace
+kubectl --kubeconfig ~/.kube/config create namespace test-docker-in-docker
+```
+
 Replace 1.8 with 1.9 or 1.10 to use other Kubernetes versions.
 **Important note:** you need to do `./kubernetes-docker-in-docker-cluster-....sh clean` when
 you switch between Kubernetes versions (but no need to do this between
