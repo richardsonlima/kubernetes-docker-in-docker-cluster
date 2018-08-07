@@ -1,0 +1,16 @@
+sudo: required
+services: docker
+language: minimal
+
+env:
+  - TEST_CASE=1.8
+  - TEST_CASE=1.9
+  - TEST_CASE=1.10
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y liblz4-tool
+
+script:
+  # building k8s may cause Travis to time out w/o output
+  - if [ -n "${TWAIT:-}" ]; then travis_wait 35 ./test.sh; else ./test.sh; fi
