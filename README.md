@@ -34,7 +34,7 @@ projects that extend or use Kubernetes. For example, you can start
 Kubernetes 1.9 like this:
 
 ```shell
-$ wget https://asdasdasd/kubernetes-docker-in-docker-cluster-v1.9.sh
+$ wget https://raw.githubusercontent.com/richardsonlima/kubernetes-docker-in-docker-cluster/master/kubernetes-docker-in-docker-cluster-v1.9.sh
 $ chmod +x kubernetes-docker-in-docker-cluster-v1.9.sh
 
 $ # start the cluster
