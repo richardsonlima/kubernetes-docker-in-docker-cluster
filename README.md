@@ -43,10 +43,17 @@ $ ./kubernetes-docker-in-docker-cluster-v1.9.sh up
 $ # also you can start the cluster with 3 nodes
 $ NUM_NODES=3 ./kubernetes-docker-in-docker-cluster-v1.9.sh up
 
-$ # add kubectl directory to PATH
-$ export PATH="$HOME/.kubernetes-docker-in-docker-cluster:$PATH"
+$ mkdir -p ~/.kube && \
+sudo docker cp `sudo docker ps -a |grep kube-master \
+|awk '{print $1}'`:/etc/kubernetes/admin.conf ~/.kube/config && \ 
+sudo chown -R ${USER} ~/.kube 
 
-$ kubectl get nodes
+$ kubectl --kubeconfig ~/.kube/config get pods --all-namespaces
+
+# Creating a namespace
+$ kubectl --kubeconfig ~/.kube/config create namespace test-docker-in-docker
+
+$ kubectl --kubeconfig ~/.kube/config get nodes
 NAME          STATUS    ROLES     AGE       VERSION
 kube-master   Ready     master    57m       v1.9.9
 kube-node-1   Ready     <none>    56m       v1.9.9
@@ -63,17 +70,6 @@ $ ./kubernetes-docker-in-docker-cluster-v1.9.sh down
 
 $ # remove containers and volumes
 $ ./kubernetes-docker-in-docker-cluster-v1.9.sh clean
-```
-
-## Some tricks
-```
-mkdir -p ~/.kube && \
-sudo docker cp `sudo docker ps -a |grep kube-master |awk '{print $1}'`:/etc/kubernetes/admin.conf ~/.kube/config && \ 
-sudo chown -R ${USER} ~/.kube && \
-kubectl --kubeconfig ~/.kube/config get pods --all-namespaces
-
-# Creating a namespace
-kubectl --kubeconfig ~/.kube/config create namespace test-docker-in-docker
 ```
 
 Replace 1.8 with 1.9 or 1.10 to use other Kubernetes versions.
