@@ -76,8 +76,7 @@ $ ./kubernetes-docker-in-docker-cluster-v1.9.sh clean
 ```
 
 Terminal session test::
-
-[![asciicast](https://asciinema.org/a/32758.png)](https://asciinema.org/a/32758?autoplay=1) 
+[![asciicast](https://asciinema.org/a/195341.png)](https://asciinema.org/a/195341?autoplay=1) 
 
 Replace 1.8 with 1.9 or 1.10 to use other Kubernetes versions.
 **Important note:** you need to do `./kubernetes-docker-in-docker-cluster-....sh clean` when
