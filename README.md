@@ -34,6 +34,11 @@ projects that extend or use Kubernetes. For example, you can start
 Kubernetes 1.9 like this:
 
 ```shell
+
+# Downloading kubectl (1.9.9 - for linux) 
+$ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.9.9/bin/linux/amd64/kubectl
+$ mv kubectl /usr/local/bin/
+
 $ wget https://raw.githubusercontent.com/richardsonlima/kubernetes-docker-in-docker-cluster/master/kubernetes-docker-in-docker-cluster-v1.9.sh
 $ chmod +x kubernetes-docker-in-docker-cluster-v1.9.sh
 
@@ -43,14 +48,8 @@ $ ./kubernetes-docker-in-docker-cluster-v1.9.sh up
 $ # also you can start the cluster with 3 nodes
 $ NUM_NODES=3 ./kubernetes-docker-in-docker-cluster-v1.9.sh up
 
-$ mkdir -p ~/.kube && \
-sudo docker cp `sudo docker ps -a |grep kube-master \
-|awk '{print $1}'`:/etc/kubernetes/admin.conf ~/.kube/config && \ 
-sudo chown -R ${USER} ~/.kube 
+$ ./kubernetes-docker-in-docker-cluster-v1.9.sh initial-config 
 
-# Downloading kubectl (1.9.9 - for linux) 
-$ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.9.9/bin/linux/amd64/kubectl
-$ mv kubectl /usr/local/bin/
 $ kubectl --kubeconfig ~/.kube/config get pods --all-namespaces
 
 # Creating a namespace
