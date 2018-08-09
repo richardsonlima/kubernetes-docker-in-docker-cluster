@@ -551,6 +551,17 @@ function dind::ensure-kubectl {
   fi
 }
 
+function dind::prepare-kube-local-environment {
+  dind::step "Creating .kube local dir"
+  mkdir -p ~/.kube 
+  dind::step "Making a copy of admin conf into .kube"
+  sudo docker cp `sudo docker ps -a |grep kube-master |awk '{print $1}'`:/etc/kubernetes/admin.conf ~/.kube/config 
+  dind::step "Granting local user perms on ~/.kube/config"
+  sudo chown -R ${USER} ~/.kube 
+  dind::step "Now you can use local kubectl like this: kubectl --kubeconfig ~/.kube/config create namespace test-docker-in-docker"
+  dind::step ""
+}
+
 function dind::ensure-binaries {
   local -a to_build=()
   for name in "$@"; do
@@ -1197,7 +1208,27 @@ function dind::wait-for-ready {
 
   local local_host
   local_host="$( dind::localhost )"
-  dind::step "Access dashboard at:" "http://${local_host}:$(dind::apiserver-port)/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy"
+
+  dind::step "
+
+██╗  ██╗ █████╗ ███████╗    ██████╗ ██╗███╗   ██╗██████╗ 
+██║ ██╔╝██╔══██╗██╔════╝    ██╔══██╗██║████╗  ██║██╔══██╗
+█████╔╝ ╚█████╔╝███████╗    ██║  ██║██║██╔██╗ ██║██║  ██║
+██╔═██╗ ██╔══██╗╚════██║    ██║  ██║██║██║╚██╗██║██║  ██║
+██║  ██╗╚█████╔╝███████║    ██████╔╝██║██║ ╚████║██████╔╝
+╚═╝  ╚═╝ ╚════╝ ╚══════╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝╚═════╝  "
+                                                                                    
+  dind::step ""
+  dind::step "[+] Access dashboard at:" "http://${local_host}:$(dind::apiserver-port)/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy"
+  dind::step "[*] Now you need use the flag initial-config to start using your local kubectl to control the cluster"
+  dind::step "[*] e.g : ./kubernetes-docker-in-docker-cluster-v1.9.sh initial-config"
+  dind::step ""
+  dind::step ""
+  dind::step "[!!] Make sure that kubectl ( v1.9 ) is installed on this machine"
+  dind::step "[!!] Type without sudo to create the environment on local user home dir" 
+  dind::step "[!!] If you use sudo it will be created on root user home dir "
+  dind::step ""
+  dind::step ""
 }
 
 function dind::up {
@@ -1807,6 +1838,10 @@ case "${1:-}" in
   clean)
     dind::clean
     ;;
+  initial-config)
+    shift
+    dind::prepare-kube-local-environment
+    ;;  
   copy-image)
     dind::copy-image "$@"
     ;;
@@ -1842,6 +1877,7 @@ case "${1:-}" in
     echo "  $0 join kubeadm-args..." >&2
     # echo "  $0 bare container_name [docker_options...]"
     echo "  $0 clean"
+    echo "  $0 initial-config" >&2
     echo "  $0 copy-image [image_name]" >&2
     echo "  $0 e2e [test-name-substring]" >&2
     echo "  $0 e2e-serial [test-name-substring]" >&2
