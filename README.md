@@ -9,12 +9,12 @@ better to have `kubectl` executable in your path matching the
 version of k8s binaries you're using (i.e. for example better don't
 use `kubectl` 1.9.x with `hyperkube` 1.8.x).
 
-`kubernetes-cluster-over-docker` supports k8s versions 1.8.x, 1.9.x .
+`kubernetes-docker-in-docker-cluster` supports k8s versions 1.8.x, 1.9.x .
 
-**Run `kubernetes-cluster-over-docker` on Docker with `btrfs`
+**Run `kubernetes-docker-in-docker-cluster` on Docker with `btrfs`
 storage driver is not supported.**
 
-By default `kubernetes-cluster-over-docker` uses dockerized builds, so no Go
+By default `kubernetes-docker-in-docker-cluster` uses dockerized builds, so no Go
 installation is necessary even if you're building Kubernetes from
 source. If you want you can overridde this behavior by setting
 `KUBEADM_DIND_LOCAL` to a non-empty value in [config.sh](config.sh).
@@ -22,10 +22,6 @@ source. If you want you can overridde this behavior by setting
 ### Mac OS X considerations
 
 Ensure to have `md5sha1sum` installed. If not existing can be installed via `brew install md5sha1sum`.
-
-When building Kubernetes from source on Mac OS X, it should be
-possible to build `kubectl` locally, i.e. `make WHAT=cmd/kubectl` must
-work.
 
 ## Using preconfigured scripts
 `kubernetes-cluster-over-docker` currently provides preconfigured scripts for
