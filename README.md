@@ -84,7 +84,7 @@ rebuilds if you use `BUILD_HYPERKUBE=y` like described below).
 ```shell 
 # Get jx (https://jenkins-x.io/)
 curl -L https://github.com/jenkins-x/jx/releases/download/v1.3.168/jx-darwin-amd64.tar.gz | tar xzv 
-sudo mv jx /usr/local/bin```
+sudo mv jx /usr/local/bin
 
 # Install JenkinsX on DIND K8S Cluster
 jx install --provider=kubernetes --on-premise
