@@ -77,3 +77,15 @@ Replace 1.8 with 1.9 or 1.10 to use other Kubernetes versions.
 **Important note:** you need to do `./kubernetes-docker-in-docker-cluster-....sh clean` when
 you switch between Kubernetes versions (but no need to do this between
 rebuilds if you use `BUILD_HYPERKUBE=y` like described below).
+
+### Using local cluster with JenkinsX 
+
+### Get jx (https://jenkins-x.io/)
+ 
+```shell curl -L https://github.com/jenkins-x/jx/releases/download/v1.3.168/jx-darwin-amd64.tar.gz | tar xzv 
+sudo mv jx /usr/local/bin```
+
+### Install JenkinsX on DIND K8S Cluster
+```shell jx install --provider=kubernetes --on-premise
+```
+
