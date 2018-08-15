@@ -87,6 +87,6 @@ curl -L https://github.com/jenkins-x/jx/releases/download/v1.3.168/jx-darwin-amd
 sudo mv jx /usr/local/bin
 
 # Install JenkinsX on DIND K8S Cluster
-jx install --provider=kubernetes --on-premise
+jx install --provider=kubernetes --on-premise (or  --local-cloud-environment)
 ```
 
