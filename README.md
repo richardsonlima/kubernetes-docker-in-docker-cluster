@@ -80,12 +80,13 @@ rebuilds if you use `BUILD_HYPERKUBE=y` like described below).
 
 ### Using local cluster with JenkinsX 
 
-### Get jx (https://jenkins-x.io/)
  
-```shell curl -L https://github.com/jenkins-x/jx/releases/download/v1.3.168/jx-darwin-amd64.tar.gz | tar xzv 
+```shell 
+# Get jx (https://jenkins-x.io/)
+curl -L https://github.com/jenkins-x/jx/releases/download/v1.3.168/jx-darwin-amd64.tar.gz | tar xzv 
 sudo mv jx /usr/local/bin```
 
-### Install JenkinsX on DIND K8S Cluster
-```shell jx install --provider=kubernetes --on-premise
+# Install JenkinsX on DIND K8S Cluster
+jx install --provider=kubernetes --on-premise
 ```
 
