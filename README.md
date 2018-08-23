@@ -303,7 +303,10 @@ You can now play with the guestbook that you just created by opening it in a bro
  * **Service Port Forward:**
     It should be a trick to connect to guestbook running in a Kubernetes cluster
   
-  `$ kubectl port-forward svc/guestbook 3000:3000`
+  `$ kubectl port-forward svc/guestbook 3000:3000
+     Forwarding from 127.0.0.1:3000 -> 3000
+     Forwarding from [::1]:3000 -> 3000
+  `
   
   RMore info: https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
 
