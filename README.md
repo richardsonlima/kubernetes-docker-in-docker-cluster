@@ -29,7 +29,7 @@ Kubernetes 1.8, 1.9. This may be convenient for use with
 projects that extend or use Kubernetes. For example, you can start
 Kubernetes 1.9 like this:
 
-```shell
+```console
 
 # Downloading kubectl (1.9.9 - for linux) 
 $ curl -O https://storage.googleapis.com/kubernetes-release/release/v1.9.9/bin/linux/amd64/kubectl
@@ -81,7 +81,7 @@ rebuilds if you use `BUILD_HYPERKUBE=y` like described below).
 ### Using local cluster with JenkinsX 
 
  
-```shell 
+```console
 # Get jx (https://jenkins-x.io/)
 curl -L https://github.com/jenkins-x/jx/releases/download/v1.3.168/jx-darwin-amd64.tar.gz | tar xzv 
 sudo mv jx /usr/local/bin
@@ -305,8 +305,8 @@ You can now play with the guestbook that you just created by opening it in a bro
   
   ```console
   $ kubectl port-forward svc/guestbook 3000:3000
-     Forwarding from 127.0.0.1:3000 -> 3000
-     Forwarding from [::1]:3000 -> 3000
+  Forwarding from 127.0.0.1:3000 -> 3000
+  Forwarding from [::1]:3000 -> 3000
   ```
   
   RMore info: https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
