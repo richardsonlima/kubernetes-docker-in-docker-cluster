@@ -309,14 +309,6 @@ You can now play with the guestbook that you just created by opening it in a bro
   Forwarding from [::1]:3000 -> 3000
   ```
   
-  RMore info: https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
+ More info: https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
 
- * **Local Host:**
-    If you are running Kubernetes locally, to view the guestbook, navigate to `http://localhost:3000` in your browser.
-
- * **Remote Host:**
-    1. To view the guestbook on a remote host, locate the external IP of the load balancer in the **IP** column of the `kubectl get services` output. In our example, the internal IP address is `10.0.217.218` and the external IP address is `146.148.81.8` (*Note: you might need to scroll to see the IP column*).
-
-    2. Append port `3000` to the IP address (for example `http://146.148.81.8:3000`), and then navigate to that address in your browser.
-
-    Result: The guestbook displays in your browser:
+ To view the guestbook, navigate to `http://localhost:3000` in your browser.
