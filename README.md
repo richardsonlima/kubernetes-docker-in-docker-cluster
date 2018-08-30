@@ -312,3 +312,27 @@ You can now play with the guestbook that you just created by opening it in a bro
  More info: https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
 
  To view the guestbook, navigate to `http://localhost:3000` in your browser.
+
+### Installing KubeApps
+```console
+$ curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash
+$ gofish init
+$ gofish install helm
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm init
+$ helm install --name kubeapps --namespace kubeapps bitnami/kubeapps
+$ kubectl create serviceaccount kubeapps-operator
+$ kubectl create clusterrolebinding kubeapps-operator --clusterrole=cluster-admin --serviceaccount=default:kubeapps-operator
+$ kubectl get secret $(kubectl get serviceaccount kubeapps-operator -o jsonpath='{.secrets[].name}') -o jsonpath='{.data.token}' | base64 --decode\n
+$ kubectl port-forward --namespace kubeapps svc/kubeapps 8080:80
+```
+
+ * **Service Port Forward:**
+    It should be a trick to connect to KubeApps running in a Kubernetes cluster
+  
+  ```console
+  $ kubectl port-forward --namespace kubeapps svc/kubeapps 8080:80
+  Forwarding from 127.0.0.1:8080 -> 8080
+  Forwarding from [::1]:8080 -> 8080
+  ```
+ To view the guestbook, navigate to `http://localhost:8000` in your browser.
