@@ -335,4 +335,4 @@ $ kubectl port-forward --namespace kubeapps svc/kubeapps 8080:80
   Forwarding from 127.0.0.1:8080 -> 8080
   Forwarding from [::1]:8080 -> 8080
   ```
- To view the guestbook, navigate to `http://localhost:8000` in your browser.
+ To view the KubeApps, navigate to `http://localhost:8080` in your browser.
