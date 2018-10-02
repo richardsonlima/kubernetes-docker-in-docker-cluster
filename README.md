@@ -1,4 +1,4 @@
-# KubeWolf [![CircleCI](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master.svg?style=svg)](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master) [![Travis CI](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster.svg?branch=master)](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster)
+# KubeWave [![CircleCI](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master.svg?style=svg)](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master) [![Travis CI](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster.svg?branch=master)](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster)
 
 <img src="/pics/logo.png" width="155px" alt="kubewolf logo">
 
