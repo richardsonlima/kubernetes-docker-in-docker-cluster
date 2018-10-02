@@ -1,6 +1,5 @@
-# KubeWave [![CircleCI](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master.svg?style=svg)](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master) [![Travis CI](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster.svg?branch=master)](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster)
-
-<img src="/pics/logo.png" width="155px" alt="kubewolf logo">
+# <img src="/pics/logo.png" width="155px" alt="kubewolf logo">
+KubeWave [![CircleCI](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master.svg?style=svg)](https://circleci.com/gh/richardsonlima/kubernetes-docker-in-docker-cluster/tree/master) [![Travis CI](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster.svg?branch=master)](https://travis-ci.org/richardsonlima/kubernetes-docker-in-docker-cluster)
 
 A Kubernetes multi-node cluster for developer of Kubernetes or extend Kubernetes. Based on kubeadm and Docker in
 Docker.
