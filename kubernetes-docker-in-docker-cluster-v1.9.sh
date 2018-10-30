@@ -127,7 +127,7 @@ function dind::localhost() {
   if [[ ${IP_MODE} = "ipv6" ]]; then
     echo '[::1]'
   else
-    echo '127.0.0.1'
+    echo "$(hostname -i)"
   fi
 }
 
@@ -137,7 +137,7 @@ if [[ ! ${EMBEDDED_CONFIG:-} ]]; then
 fi
 
 CNI_PLUGIN="${CNI_PLUGIN:-bridge}"
-ETCD_HOST="${ETCD_HOST:-127.0.0.1}"
+ETCD_HOST="${ETCD_HOST:-$(hostname -i)}"
 GCE_HOSTED="${GCE_HOSTED:-}"
 DIND_ALLOW_AAAA_USE="${DIND_ALLOW_AAAA_USE:-}"  # Default is to use DNS64 always for IPv6 mode
 if [[ ${IP_MODE} = "ipv6" ]]; then
@@ -161,7 +161,7 @@ if [[ ${IP_MODE} = "ipv6" ]]; then
 	exit 1
     fi
 else
-    KUBE_RSYNC_ADDR="${KUBE_RSYNC_ADDR:-127.0.0.1}"
+    KUBE_RSYNC_ADDR="${KUBE_RSYNC_ADDR:-$(hostname -i)}"
     SERVICE_CIDR="${SERVICE_CIDR:-10.96.0.0/12}"
     dns_server="${REMOTE_DNS64_V4SERVER:-8.8.8.8}"
     DEFAULT_POD_NETWORK_CIDR="10.244.0.0/16"
@@ -816,7 +816,7 @@ function dind::configure-kubectl {
   fi
   if [[ ${GCE_HOSTED} || ${DOCKER_HOST:-} =~ ^tcp: || ${using_linuxkit} || -n ${using_linuxdocker} ]]; then
     if [[ "${IP_MODE}" = "ipv4" ]]; then
-      host="localhost"
+	    host="$(hostname)"
     else
       host="[::1]"
     fi
@@ -1417,7 +1417,7 @@ function dind::apiserver-port {
   # Get the port from the master
   local master port
   master="$(dind::master-name)"
-  # 8080/tcp -> 127.0.0.1:8082  =>  8082
+  # 8080/tcp -> $(hostname -i):8082  =>  8082
   port="$( docker port "$master" 2>/dev/null | awk -F: "/^${INTERNAL_APISERVER_PORT}/{ print \$NF }" )"
   if [ -n "$port" ]
   then
